@@ -9,7 +9,7 @@
  * @updateUrl 
  */
 
-module.exports = class ExamplePlugin {
+module.exports = class ShaqsAlpha {
     load() {} // Optional function. Called when the plugin is loaded in to memory
 
     start() {} // Required function. Called when the plugin is activated (including after reloads)
