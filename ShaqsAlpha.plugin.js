@@ -2,17 +2,17 @@
  * @name ShaqsAlpha
  * @author Shaqalito's Labs
  * @description Alpha version of all Shaqs Plugins.
- * @version 0.0.2
+ * @version 0.0.3
  * @invite j2VFQVjWGN
  * @authorId 370576698481180674
  * @authorLink https://github.com/shaqalito
- * @updateUrl https://github.com/Shaqalito/BetterDiscordPlugins/blob/main/ShaqsAlpha.plugin.js?raw=true
- * @source https://github.com/Shaqalito/BetterDiscordPlugins/blob/main/ShaqsAlpha.plugin.js?raw=true
+ * @updateUrl https://raw.githubusercontent.com/Shaqalito/BetterDiscordPlugins/main/ShaqsAlpha.plugin.js
+ * @source https://raw.githubusercontent.com/Shaqalito/BetterDiscordPlugins/main/ShaqsAlpha.plugin.js
  */
 
 const changelog = [{
     "title": "Hmmm",
-    "items": ["Not much going on here...", "Still V0.0.2 lmao"]
+    "items": ["Not much going on here...", "Still V0.0.3 lmao"]
     }]
 const defaultConfig = [
     {
@@ -30,7 +30,7 @@ const defaultConfig = [
         "value": false
     }
     ]
-const config = {"main": "index.js", "info": {"name": "ShaqsAlpha", "authors": [{"name": "Shaqalito's Labs", "discord_id": "370576698481180674", "github_username": "Shaqalito"}], "description": "Alpha version of all Shaqs Plugins.", "version": "0.0.2", "github_raw": "https://github.com/Shaqalito/BetterDiscordPlugins/blob/main/ShaqsAlpha.plugin.js?raw=true", "github": "https://github.com/shaqalito"}, rawUrl: "https://github.com/Shaqalito/BetterDiscordPlugins/blob/main/ShaqsAlpha.plugin.js?raw=true", "changelog": changelog, "defaultConfig": defaultConfig}
+const config = {"main": "index.js", "info": {"name": "ShaqsAlpha", "authors": [{"name": "Shaqalito's Labs", "discord_id": "370576698481180674", "github_username": "Shaqalito"}], "description": "Alpha version of all Shaqs Plugins.", "version": "0.0.2", "github_raw": "https://raw.githubusercontent.com/Shaqalito/BetterDiscordPlugins/main/ShaqsAlpha.plugin.js", "github": "https://github.com/shaqalito"}, rawUrl: "https://raw.githubusercontent.com/Shaqalito/BetterDiscordPlugins/main/ShaqsAlpha.plugin.js", "changelog": changelog, "defaultConfig": defaultConfig}
 
 
 module.exports = (() => {
@@ -68,7 +68,7 @@ module.exports = (() => {
     }
     replacement(thisObj, _args, ret) {
         if(this.settings.enableToasts) {
-            Toasts.info("Joined a channel !", {timeout: 3000})
+            Toasts.info("Joined a channel!", {timeout: 3000})
         }
     }
     onStop() {
