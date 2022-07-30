@@ -63,6 +63,7 @@ module.exports = (() => {
   return class ShaqsAlpha extends Plugin {
     onStart() {
         PluginUpdater.checkForUpdate("ShaqsAlpha", config.info.version, config.rawUrl)
+        PluginUpdater.processUpdateCheck("ShaqsAlpha", config.rawUrl)
         const voiceModule = WebpackModules.getByPrototypes("setSelfDeaf");
         Patcher.after(voiceModule.prototype, "initialize", this.replacement.bind(this));
     }
