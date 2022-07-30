@@ -1,16 +1,16 @@
-const pluginVersion = "a0.0.2"
-
 /**
  * @name ShaqsAlpha
  * @author Shaqalito's Labs
  * @description Alpha version of all Shaqs Plugins.
- * @version pluginVersion
+ * @version a0.0.1
  * @invite j2VFQVjWGN
  * @authorId 370576698481180674
  * @authorLink https://github.com/shaqalito
  * @updateUrl https://raw.githubusercontent.com/Shaqalito/BetterDiscordPlugins/main/ShaqsAlpha.plugin.js
  * @source https://raw.githubusercontent.com/Shaqalito/BetterDiscordPlugins/main/ShaqsAlpha.plugin.js
  */
+
+const { argv0 } = require("process");
 
 const changelog = [{
     "title": "Hmmm",
@@ -32,7 +32,7 @@ const defaultConfig = [
         "value": false
     }
     ]
-const config = {"main": "index.js", "info": {"name": "ShaqsAlpha", "authors": [{"name": "Shaqalito's Labs", "discord_id": "370576698481180674", "github_username": "Shaqalito"}], "description": "Alpha version of all Shaqs Plugins.", "version": pluginVersion, "github_raw": "https://raw.githubusercontent.com/Shaqalito/BetterDiscordPlugins/main/ShaqsAlpha.plugin.js", "github": "https://github.com/shaqalito"}, "changelog": changelog, "defaultConfig": defaultConfig}
+const config = {"main": "index.js", "info": {"name": "ShaqsAlpha", "authors": [{"name": "Shaqalito's Labs", "discord_id": "370576698481180674", "github_username": "Shaqalito"}], "description": "Alpha version of all Shaqs Plugins.", "version": "a0.0.2", "github_raw": "https://raw.githubusercontent.com/Shaqalito/BetterDiscordPlugins/main/ShaqsAlpha.plugin.js", "github": "https://github.com/shaqalito"}, "changelog": changelog, "defaultConfig": defaultConfig}
 
 
 module.exports = (() => {
@@ -64,7 +64,7 @@ module.exports = (() => {
 
   return class ShaqsAlpha extends Plugin {
     onStart() {
-        PluginUpdater.checkForUpdate("ShaqsAlpha", this.config.info.version, this.config.info.github_raw)
+        //PluginUpdater.checkForUpdate("ShaqsAlpha", this.config.info.version, this.config.info.github_raw)
         const voiceModule = WebpackModules.getByPrototypes("setSelfDeaf");
         Patcher.after(voiceModule.prototype, "initialize", this.replacement.bind(this));
     }
