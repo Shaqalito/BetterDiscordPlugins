@@ -1,8 +1,10 @@
+const pluginVersion = "a0.0.2"
+
 /**
  * @name ShaqsAlpha
  * @author Shaqalito's Labs
  * @description Alpha version of all Shaqs Plugins.
- * @version a0.0.2
+ * @version pluginVersion
  * @invite j2VFQVjWGN
  * @authorId 370576698481180674
  * @authorLink https://github.com/shaqalito
@@ -30,7 +32,7 @@ const defaultConfig = [
         "value": false
     }
     ]
-const config = {"main": "index.js", "info": {"name": "ShaqsAlpha", "authors": [{"name": "Shaqalito's Labs", "discord_id": "370576698481180674", "github_username": "Shaqalito"}], "description": "Alpha version of all Shaqs Plugins.", "version": document.getElementsByTagName("meta").version.content, "github_raw": "https://raw.githubusercontent.com/Shaqalito/BetterDiscordPlugins/main/ShaqsAlpha.plugin.js", "github": "https://github.com/shaqalito"}, "changelog": changelog, "defaultConfig": defaultConfig}
+const config = {"main": "index.js", "info": {"name": "ShaqsAlpha", "authors": [{"name": "Shaqalito's Labs", "discord_id": "370576698481180674", "github_username": "Shaqalito"}], "description": "Alpha version of all Shaqs Plugins.", "version": pluginVersion, "github_raw": "https://raw.githubusercontent.com/Shaqalito/BetterDiscordPlugins/main/ShaqsAlpha.plugin.js", "github": "https://github.com/shaqalito"}, "changelog": changelog, "defaultConfig": defaultConfig}
 
 
 module.exports = (() => {
