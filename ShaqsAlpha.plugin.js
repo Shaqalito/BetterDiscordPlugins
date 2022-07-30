@@ -10,8 +10,6 @@
  * @source https://github.com/Shaqalito/BetterDiscordPlugins/blob/main/ShaqsAlpha.plugin.js?raw=true
  */
 
-const { argv0 } = require("process");
-
 const changelog = [{
     "title": "Hmmm",
     "items": ["Not much going on here..."]
