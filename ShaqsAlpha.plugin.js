@@ -2,7 +2,7 @@
  * @name ShaqsAlpha
  * @author Shaqalito's Labs
  * @description Alpha version of all Shaqs Plugins.
- * @version a0.0.1
+ * @version a0.0.2
  * @invite j2VFQVjWGN
  * @authorId 370576698481180674
  * @authorLink https://github.com/shaqalito
@@ -64,7 +64,6 @@ module.exports = (() => {
 
   return class ShaqsAlpha extends Plugin {
     onStart() {
-        PluginUpdater.checkForUpdate("ShaqsAlpha", this.config.info.version, this.config.info.github_raw)
         const voiceModule = WebpackModules.getByPrototypes("setSelfDeaf");
         Patcher.after(voiceModule.prototype, "initialize", this.replacement.bind(this));
     }
