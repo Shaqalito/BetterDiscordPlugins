@@ -2,7 +2,7 @@
  * @name ShaqsAlpha
  * @author Shaqalito's Labs
  * @description Alpha version of all Shaqs Plugins.
- * @version 0.0.1
+ * @version a0.0.2
  * @invite j2VFQVjWGN
  * @authorId 370576698481180674
  * @authorLink https://github.com/shaqalito
@@ -30,7 +30,7 @@ const defaultConfig = [
         "value": false
     }
     ]
-const config = {main: "index.js", info: {name: "ShaqsAlpha", authors: [{name: "Shaqalito's Labs", discord_id: 370576698481180674, github_username: "Shaqalito"}], description: "Alpha version of all Shaqs Plugins.", version: "a0.0.1", github_raw: "https://raw.githubusercontent.com/Shaqalito/BetterDiscordPlugins/main/ShaqsAlpha.plugin.js", github: "https://github.com/shaqalito"}, changelog: changelog, defaultConfig: defaultConfig}
+const config = {"main": "index.js", "info": {"name": "ShaqsAlpha", "authors": [{"name": "Shaqalito's Labs", "discord_id": "370576698481180674", "github_username": "Shaqalito"}], "description": "Alpha version of all Shaqs Plugins.", "version": document.getElementsByTagName("meta").version.content, "github_raw": "https://raw.githubusercontent.com/Shaqalito/BetterDiscordPlugins/main/ShaqsAlpha.plugin.js", "github": "https://github.com/shaqalito"}, "changelog": changelog, "defaultConfig": defaultConfig}
 
 
 module.exports = (() => {
@@ -58,12 +58,13 @@ module.exports = (() => {
         stop() {}
     } : (([Plugin, Api]) => {
         const plugin = (Plugin, Library) => {
-  const { WebpackModules, Patcher, Toasts, Settings, DiscordClasses } = Library;
+  const { WebpackModules, Patcher, Toasts, PluginUpdater } = Library;
 
   return class ShaqsAlpha extends Plugin {
     onStart() {
-      const voiceModule = WebpackModules.getByPrototypes("setSelfMute");
-      Patcher.after(voiceModule.prototype, "initialize", this.replacement.bind(this));
+        PluginUpdater.checkForUpdate("ShaqsAlpha", this.config.info.version, this.config.info.github_raw)
+        const voiceModule = WebpackModules.getByPrototypes("setSelfDeaf");
+        Patcher.after(voiceModule.prototype, "initialize", this.replacement.bind(this));
     }
     replacement(thisObj, _args, ret) {
         if(this.settings.enableToasts) {
