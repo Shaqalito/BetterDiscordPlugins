@@ -64,7 +64,7 @@ module.exports = (() => {
 
   return class ShaqsAlpha extends Plugin {
     onStart() {
-        //PluginUpdater.checkForUpdate("ShaqsAlpha", this.config.info.version, this.config.info.github_raw)
+        PluginUpdater.checkForUpdate("ShaqsAlpha", this.config.info.version, this.config.info.github_raw)
         const voiceModule = WebpackModules.getByPrototypes("setSelfDeaf");
         Patcher.after(voiceModule.prototype, "initialize", this.replacement.bind(this));
     }
