@@ -12,7 +12,7 @@
 
 const changelog = [{
     "title": "Hmmm",
-    "items": ["Not much going on here..."]
+    "items": ["Not much going on here...", "Still V0.0.2 lmao"]
     }]
 const defaultConfig = [
     {
