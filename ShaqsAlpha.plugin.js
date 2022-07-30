@@ -2,7 +2,7 @@
  * @name ShaqsAlpha
  * @author Shaqalito's Labs
  * @description Alpha version of all Shaqs Plugins.
- * @version 0.0.3
+ * @version 0.0.4
  * @invite j2VFQVjWGN
  * @authorId 370576698481180674
  * @authorLink https://github.com/shaqalito
@@ -29,9 +29,9 @@ const defaultConfig = [
         "note": "Enables the test and beta features. (CAN BE VERY BUGGY AND UNSTABLE)",
         "value": false
     }
-    ]
-const config = {"main": "index.js", "info": {"name": "ShaqsAlpha", "authors": [{"name": "Shaqalito's Labs", "discord_id": "370576698481180674", "github_username": "Shaqalito"}], "description": "Alpha version of all Shaqs Plugins.", "version": "0.0.3", "github_raw": "https://raw.githubusercontent.com/Shaqalito/BetterDiscordPlugins/main/ShaqsAlpha.plugin.js", "github": "https://github.com/shaqalito"}, rawUrl: "https://raw.githubusercontent.com/Shaqalito/BetterDiscordPlugins/main/ShaqsAlpha.plugin.js", "changelog": changelog, "defaultConfig": defaultConfig}
+]
 
+const config = {"info": {"name": "ShaqsAlpha", "authors": [{"name": "Shaqalito's Labs", "discord_id": "370576698481180674", "github_username": "Shaqalito"}], "description": "Alpha version of all Shaqs Plugins.", "version": "0.0.2", "github_raw": "https://raw.githubusercontent.com/Shaqalito/BetterDiscordPlugins/main/ShaqsAlpha.plugin.js", "github": "https://github.com/shaqalito"}, rawUrl: "https://raw.githubusercontent.com/Shaqalito/BetterDiscordPlugins/main/ShaqsAlpha.plugin.js", "changelog": changelog, "defaultConfig": defaultConfig}
 
 module.exports = (() => {
     return !global.ZeresPluginLibrary ? class {
@@ -68,7 +68,7 @@ module.exports = (() => {
     }
     replacement(thisObj, _args, ret) {
         if(this.settings.enableToasts) {
-            Toasts.info("Joined a channel!", {timeout: 3000})
+            Toasts.info("Joined a new channel!", {timeout: 3000})
         }
     }
     onStop() {
