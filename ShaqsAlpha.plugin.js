@@ -2,7 +2,7 @@
  * @name ShaqsAlpha
  * @author Shaqalito's Labs
  * @description Alpha version of all Shaqs Plugins.
- * @version 0.0.4
+ * @version 0.0.5
  * @invite j2VFQVjWGN
  * @authorId 370576698481180674
  * @authorLink https://github.com/shaqalito
@@ -13,13 +13,15 @@
 const changelog = [
     {
         "title": "Fixes",
+        "type": "fixed",
         "items": [
             "Updating system"
             ]
     },
     {
         "title": "TODO",
-        "itmes": [
+        "type": "progress",
+        "items": [
             "Give a use to the alpha parameter lmao"
         ]
     }
@@ -72,7 +74,7 @@ module.exports = (() => {
 
   return class ShaqsAlpha extends Plugin {
     onStart() {
-        PluginUpdater.processUpdateCheck(config.info.name, config.info.version, config.rawUrl)
+        PluginUpdater.processUpdateCheck(config.info.name, config.rawUrl)
         const voiceModule = WebpackModules.getByPrototypes("setSelfDeaf");
         Patcher.after(voiceModule.prototype, "initialize", this.replacement.bind(this));
     }
