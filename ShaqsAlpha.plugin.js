@@ -2,7 +2,7 @@
  * @name ShaqsAlpha
  * @author Shaqalito's Labs
  * @description Alpha version of all Shaqs Plugins.
- * @version 0.0.2
+ * @version 0.0.3
  * @invite j2VFQVjWGN
  * @authorId 370576698481180674
  * @authorLink https://github.com/shaqalito
@@ -12,7 +12,7 @@
 
 const changelog = [{
     "title": "Hmmm",
-    "items": ["Not much going on here...", "Still V0.0.2 lmao"]
+    "items": ["Not much going on here...", "Still V0.0.3 lmao"]
     }]
 const defaultConfig = [
     {
@@ -69,7 +69,7 @@ module.exports = (() => {
     }
     replacement(thisObj, _args, ret) {
         if(this.settings.enableToasts) {
-            Toasts.info("Joined a channel!", {timeout: 3000})
+            Toasts.info("Joined a new channel!", {timeout: 3000})
         }
     }
     onStop() {
