@@ -2,7 +2,7 @@
  * @name ShaqsAlpha
  * @author Shaqalito's Labs
  * @description Alpha version of all Shaqs Plugins.
- * @version 0.0.3
+ * @version 0.0.4
  * @invite j2VFQVjWGN
  * @authorId 370576698481180674
  * @authorLink https://github.com/shaqalito
@@ -10,10 +10,20 @@
  * @source https://raw.githubusercontent.com/Shaqalito/BetterDiscordPlugins/main/ShaqsAlpha.plugin.js
  */
 
-const changelog = [{
-    "title": "Hmmm",
-    "items": ["Not much going on here...", "Still V0.0.3 lmao"]
-    }]
+const changelog = [
+    {
+        "title": "Fixes",
+        "items": [
+            "Updating system"
+            ]
+    },
+    {
+        "title": "TODO",
+        "itmes": [
+            "Give a use to the alpha parameter lmao"
+        ]
+    }
+]
 const defaultConfig = [
     {
         "type": "switch",
@@ -31,7 +41,7 @@ const defaultConfig = [
     }
 ]
 
-const config = {"info": {"name": "ShaqsAlpha", "authors": [{"name": "Shaqalito's Labs", "discord_id": "370576698481180674", "github_username": "Shaqalito"}], "description": "Alpha version of all Shaqs Plugins.", "version": "0.0.3", "github_raw": "https://raw.githubusercontent.com/Shaqalito/BetterDiscordPlugins/main/ShaqsAlpha.plugin.js", "github": "https://github.com/shaqalito"}, rawUrl: "https://raw.githubusercontent.com/Shaqalito/BetterDiscordPlugins/main/ShaqsAlpha.plugin.js", "changelog": changelog, "defaultConfig": defaultConfig}
+const config = {"info": {"name": "ShaqsAlpha", "authors": [{"name": "Shaqalito's Labs", "discord_id": "370576698481180674", "github_username": "Shaqalito"}], "description": "Alpha version of all Shaqs Plugins.", "version": "0.0.4", "github_raw": "https://raw.githubusercontent.com/Shaqalito/BetterDiscordPlugins/main/ShaqsAlpha.plugin.js", "github": "https://github.com/shaqalito"}, rawUrl: "https://raw.githubusercontent.com/Shaqalito/BetterDiscordPlugins/main/ShaqsAlpha.plugin.js", "changelog": changelog, "defaultConfig": defaultConfig}
 
 module.exports = (() => {
     return !global.ZeresPluginLibrary ? class {
@@ -62,14 +72,13 @@ module.exports = (() => {
 
   return class ShaqsAlpha extends Plugin {
     onStart() {
-        console.log(window.PluginUpdates.plugins)
-        PluginUpdater.checkForUpdate(config.info.name, config.info.version, config.rawUrl)
+        PluginUpdater.processUpdateCheck(config.info.name, config.info.version, config.rawUrl)
         const voiceModule = WebpackModules.getByPrototypes("setSelfDeaf");
         Patcher.after(voiceModule.prototype, "initialize", this.replacement.bind(this));
     }
     replacement(thisObj, _args, ret) {
         if(this.settings.enableToasts) {
-            Toasts.info("Joined a new channel!", {timeout: 3000})
+            Toasts.info("Joined a new VC!", {timeout: 3000})
         }
     }
     onStop() {
