@@ -2,7 +2,7 @@
  * @name ShaqsAlpha
  * @author Shaqalito's Labs
  * @description Alpha version of all Shaqs Plugins.
- * @version 0.0.5
+ * @version 0.0.6
  * @invite j2VFQVjWGN
  * @authorId 370576698481180674
  * @authorLink https://github.com/shaqalito
@@ -12,11 +12,9 @@
 
 const changelog = [
     {
-        "title": "Fixes",
-        "type": "fixed",
-        "items": [
-            "Updating system"
-            ]
+        "title": "Added",
+        "type": "added",
+        "items": ["VC Channel Handling"]
     },
     {
         "title": "TODO",
@@ -43,7 +41,7 @@ const defaultConfig = [
     }
 ]
 
-const config = {"info": {"name": "ShaqsAlpha", "authors": [{"name": "Shaqalito's Labs", "discord_id": "370576698481180674", "github_username": "Shaqalito"}], "description": "Alpha version of all Shaqs Plugins.", "version": "0.0.5", "github_raw": "https://raw.githubusercontent.com/Shaqalito/BetterDiscordPlugins/main/ShaqsAlpha.plugin.js", "github": "https://github.com/shaqalito"}, rawUrl: "https://raw.githubusercontent.com/Shaqalito/BetterDiscordPlugins/main/ShaqsAlpha.plugin.js", "changelog": changelog, "defaultConfig": defaultConfig}
+const config = {"info": {"name": "ShaqsAlpha", "authors": [{"name": "Shaqalito's Labs", "discord_id": "370576698481180674", "github_username": "Shaqalito"}], "description": "Alpha version of all Shaqs Plugins.", "version": "0.0.6", "github_raw": "https://raw.githubusercontent.com/Shaqalito/BetterDiscordPlugins/main/ShaqsAlpha.plugin.js", "github": "https://github.com/shaqalito"}, rawUrl: "https://raw.githubusercontent.com/Shaqalito/BetterDiscordPlugins/main/ShaqsAlpha.plugin.js", "changelog": changelog, "defaultConfig": defaultConfig}
 
 module.exports = (() => {
     return !global.ZeresPluginLibrary ? class {
@@ -70,7 +68,7 @@ module.exports = (() => {
         stop() {}
     } : (([Plugin, Api]) => {
         const plugin = (Plugin, Library) => {
-  const { WebpackModules, Patcher, Toasts, PluginUpdater } = Library;
+  const { WebpackModules, Patcher, Toasts, PluginUpdater, DiscordModules } = Library;
 
   return class ShaqsAlpha extends Plugin {
     onStart() {
@@ -78,9 +76,11 @@ module.exports = (() => {
         const voiceModule = WebpackModules.getByPrototypes("setSelfDeaf");
         Patcher.after(voiceModule.prototype, "initialize", this.replacement.bind(this));
     }
-    replacement(thisObj, _args, ret) {
+    replacement(thisObj, [props], ret) {
+        const VoiceChannelIdGetter = WebpackModules.getByProps("getVoiceChannelId")
         if(this.settings.enableToasts) {
-            Toasts.info("Joined a new VC!", {timeout: 3000})
+            var channel = DiscordModules.ChannelStore.getChannel(VoiceChannelIdGetter.getVoiceChannelId())
+            Toasts.info(`Current channel: ${channel.name}`)
         }
     }
     onStop() {
